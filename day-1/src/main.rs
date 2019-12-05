@@ -6,11 +6,10 @@ fn fuel(mass: i32) -> i32 {
 
 fn fuel_fuel(mass: i32) -> i32 {
     let result = fuel(mass);
-    if result < 0 {
-        return 0;
-    }
-
-    return result + fuel_fuel(result);
+    return match result {
+        x if x < 0 => 0,
+        _ => result + fuel_fuel(result),
+    };
 }
 
 fn main() {
